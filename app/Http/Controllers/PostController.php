@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
@@ -23,7 +24,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::where("is_active",1)->get();
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -31,7 +33,12 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $post=Post::create($request->except('categories'));
+        $post->categories()->attach($request->input('categories'));
+        if($post){
+            return redirect()->route('posts.index');
+        }
+        return redirect()->back();
     }
 
     /**
