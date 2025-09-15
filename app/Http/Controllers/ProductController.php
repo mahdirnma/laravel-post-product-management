@@ -53,7 +53,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::where("is_active",1)->get();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -61,7 +62,12 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        //
+        $status=$product->update($request->except('categories'));
+        $product->categories()->sync($request->categories);
+        if($status){
+            return redirect()->route('products.index');
+        }
+        return redirect()->back();
     }
 
     /**
