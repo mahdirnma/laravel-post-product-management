@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::where('is_active',1)->paginate(2);
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -21,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+//        return view('categories.create');
     }
 
     /**
@@ -29,7 +30,7 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+//        return view('categories.edit');
     }
 
     /**
