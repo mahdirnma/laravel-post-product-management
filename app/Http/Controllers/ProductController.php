@@ -76,6 +76,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->update(['is_active' => 0]);
+        $product->categories()->detach();
         return redirect()->route('products.index');
     }
 }

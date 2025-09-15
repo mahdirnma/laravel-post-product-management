@@ -76,6 +76,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->update(['is_active'=>0]);
+        $post->categories()->detach();
+        return redirect()->route('posts.index');
     }
 }
