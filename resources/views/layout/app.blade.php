@@ -17,8 +17,8 @@
                 <ul class="flex flex-row-reverse">
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('home')}}">home</a></li>
                     <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('products.index')}}">products</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('posts.index')}}--}}">posts</a></li>
-                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{--{{route('categories.index')}}--}}">categories</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('posts.index')}}">posts</a></li>
+                    <li class="w-44 h-full flex justify-center items-center font-mono text-balance"><a href="{{route('categories.index')}}">categories</a></li>
                 </ul>
             </nav>
         </div>
