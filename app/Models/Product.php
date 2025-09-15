@@ -15,7 +15,12 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->morphToMany(Category::class, 'categoryable');
+        return $this->morphToMany(Category::class, 'categorizable');
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
     }
 
 }

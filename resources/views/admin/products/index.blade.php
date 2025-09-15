@@ -38,11 +38,9 @@
                                 </form>
                             </td>
                             <td class="text-center">
-{{--
                                 @foreach($product->categories as $cat)
                                     {{$cat->title}} ,
                                 @endforeach
---}}
                             </td>
                             <td class="text-center">{{$product->price}}</td>
                             <td class="text-center">{{$product->description}}</td>

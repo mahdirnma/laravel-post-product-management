@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categoryable', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->morphs('categoryable');
-            $table->timestamps();
-        });
+        Schema::create('taggables', function (Blueprint $table) {
+                $table->id();
+                $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
+                $table->morphs('taggable');
+                $table->timestamps();
+            });
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categoryable');
+        Schema::dropIfExists('taggables');
     }
 };

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -22,7 +23,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::where("is_active",1)->get();
+        return view('admin.products.create', compact('categories'));
     }
 
     /**
@@ -30,7 +32,12 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        $product = Product::create($request->except('categories'));
+        $product->categories()->attach($request->categories);
+        if($product){
+            return redirect()->route('products.index');
+        }
+        return redirect()->back();
     }
 
     /**
